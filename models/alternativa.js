@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  const Alternativa = sequelize.define('categoria',
+  const Alternativa = sequelize.define('alternativa',
     {
       id: {
         type: DataTypes.INTEGER,
