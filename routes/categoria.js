@@ -1,20 +1,50 @@
-const express = require('express')
-const router = express.Router()
+const { Router } = require('express');
+const router = Router()
+const controller = require('../controllers/default');
+const { Categoria } = require('../models');
 
-router.get('/', (req, res) => {
-
+router.get('/:id?', async (req, res) => {
+  const { id } = req.params;
+  console.log(Categoria);
+  const categorias = await controller.get(id, Categoria)
+  res.send(categorias || [])
 });
 
-router.put('/', (req, res) => {
+router.post('/', async (req, res) => {
+  try {
+    const { body } = req
 
+    const categoria = await controller.save(body, Categoria);
+
+    res.send(categoria)
+  } catch (error) {
+    res.status(500).send({ error })
+  }
 });
 
-router.post('/', (req, res) => {
+router.put('/:id', async (req, res) => {
+  try {
+    const { body } = req;
+    const { id } = req.params
 
+    const categoria = await controller.edit(id, body, Categoria)
+
+    res.send(categoria);
+  } catch (error) {
+    res.status(500).send({ error })
+  }
 });
 
-router.delete('/', (req, res) => {
+router.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params
 
+    await controller.delete(id, Categoria);
+
+    res.send(id)
+  } catch (error) {
+    res.status(500).send({ error })
+  }
 });
 
 module.exports = router
