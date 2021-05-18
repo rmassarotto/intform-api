@@ -1,3 +1,5 @@
+const { Questionario } = require(".");
+
 module.exports = function (sequelize, DataTypes) {
   const Questao = sequelize.define('questao',
     {
@@ -8,19 +10,23 @@ module.exports = function (sequelize, DataTypes) {
         autoIncrement: true
       },
       titulo: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      questionarioId: {
         type: DataTypes.INTEGER,
         allowNull: false
       }
     },
     {
-      tableName: 'questao',
+      tableName: 'int_questao',
       timestamps: true
     }
   );
 
-  Questionario.associate = function (models) {
-    this.hasMany(models.AlternativaQuestao, { foreignKey: 'questaoId' });
-    this.belongsTo(models.QuestionarioQuestao, { foreignKey: 'questaoId' });
+  Questao.associate = function (models) {
+    this.hasMany(models.Alternativa, { as: 'alternativa', foreignKey: 'questaoId' });
+    this.belongsTo(models.Questionario, { as: 'questionario', foreignKey: 'questionarioId' });
   }
 
   return Questao

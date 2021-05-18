@@ -5,7 +5,6 @@ const { Categoria } = require('../models');
 
 router.get('/:id?', async (req, res) => {
   const { id } = req.params;
-  console.log(Categoria);
   const categorias = await controller.get(id, Categoria)
   res.send(categorias || [])
 });

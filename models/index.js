@@ -3,7 +3,7 @@ const _Alternativa = require('./alternativa')
 const _Categoria = require('./categoria')
 const _Tipo = require('./tipo')
 const _Questionario = require('./questionario')
-// const _Tag = require('./tag')
+const _Questao = require('./questao')
 // const _Checklist = require('./checklist')
 const database = {};
 
@@ -24,12 +24,13 @@ let Alternativa = _Alternativa(sequelize, DataTypes);
 let Categoria = _Categoria(sequelize, DataTypes);
 let Tipo = _Tipo(sequelize, DataTypes);
 let Questionario = _Questionario(sequelize, DataTypes);
-// let Tag = _Tag(sequelize, DataTypes);
+let Questao = _Questao(sequelize, DataTypes);
 // let Checklist = _Checklist(sequelize, DataTypes);
 
 database['Alternativa'] = Alternativa;
 database['Categoria'] = Categoria;
 database['Questionario'] = Questionario;
+database['Questao'] = Questao;
 database['Tipo'] = Tipo;
 // database['Nota'] = Nota;
 // database['Tag'] = Tag;

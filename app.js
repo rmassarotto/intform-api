@@ -10,6 +10,7 @@ const tipo = require('./routes/tipo');
 const usuario = require('./routes/usuario');
 const categoria = require('./routes/categoria');
 const questionario = require('./routes/questionario');
+const questao = require('./routes/questao');
 
 app.use(bodyParser.json());
 // app.use(cors)
@@ -18,6 +19,7 @@ app.use(bodyParser.json());
 app.use('/alternativa', alternativa)
 app.use('/categoria', categoria)
 app.use('/questionario', questionario)
+app.use('/questao', questao)
 app.use('/tipo', tipo)
 app.use('/usuario', usuario)
 
