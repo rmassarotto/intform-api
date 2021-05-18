@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  const Questionario = sequelize.define('usuario',
+  const Questionario = sequelize.define('questionario',
     {
       id: {
         type: DataTypes.INTEGER,
@@ -14,21 +14,17 @@ module.exports = function (sequelize, DataTypes) {
       nome: {
         type: DataTypes.STRING,
         allowNull: false
-      },
-      url: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
+      }
     },
     {
-      tableName: 'questionario',
+      tableName: 'int_questionario',
       timestamps: true
     }
   );
 
   Questionario.associate = function (models) {
-    this.belongsTo(models.Categoria, { sourceKey: 'id', foreignKey: 'categoriaId' });
-    this.hasMany(models.QuestionarioQuestao, { foreignKey: 'questionarioId' });
+    this.belongsTo(models.Categoria, { as: 'categoria', sourceKey: 'id', foreignKey: 'categoriaId' });
+    this.hasMany(models.Questao, { as: 'questao', foreignKey: 'questionarioId' });
   }
 
   return Questionario
