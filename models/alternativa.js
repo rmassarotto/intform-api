@@ -7,24 +7,28 @@ module.exports = function (sequelize, DataTypes) {
         primaryKey: true,
         autoIncrement: true
       },
-      tipoId: {
+      texto: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      questaoId: {
         type: DataTypes.INTEGER,
         allowNull: false
       },
-      texto: {
-        type: DataTypes.STRING,
+      tipoId: {
+        type: DataTypes.INTEGER,
         allowNull: false
       }
     },
     {
-      tableName: 'alternativa',
+      tableName: 'int_alternativaQuestao',
       timestamps: true
     }
   );
 
   Alternativa.associate = function (models) {
-    this.belongsTo(models.Tipo, { sourceKey: 'id', foreignKey: 'tipoId' });
-    this.hasMany(models.AlternativaQuestao, { foreignKey: 'alternativaId' });
+    this.belongsTo(models.Tipo, { as: 'tipo', sourceKey: 'id', foreignKey: 'tipoId' });
+    this.belongsTo(models.Questao, { as: 'questao', sourceKey: 'id', foreignKey: 'questaoId' });
   }
 
   return Alternativa
