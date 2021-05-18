@@ -2,7 +2,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 const _Alternativa = require('./alternativa')
 const _Categoria = require('./categoria')
 const _Tipo = require('./tipo')
-// const _Nota = require('./nota')
+const _Questionario = require('./questionario')
 // const _Tag = require('./tag')
 // const _Checklist = require('./checklist')
 const database = {};
@@ -23,12 +23,13 @@ sequelize.authenticate()
 let Alternativa = _Alternativa(sequelize, DataTypes);
 let Categoria = _Categoria(sequelize, DataTypes);
 let Tipo = _Tipo(sequelize, DataTypes);
-// let Nota = _Nota(sequelize, DataTypes);
+let Questionario = _Questionario(sequelize, DataTypes);
 // let Tag = _Tag(sequelize, DataTypes);
 // let Checklist = _Checklist(sequelize, DataTypes);
 
 database['Alternativa'] = Alternativa;
 database['Categoria'] = Categoria;
+database['Questionario'] = Questionario;
 database['Tipo'] = Tipo;
 // database['Nota'] = Nota;
 // database['Tag'] = Tag;
