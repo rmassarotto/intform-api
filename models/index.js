@@ -1,5 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const _Alternativa = require('./alternativa')
+const _Categoria = require('./categoria')
 const _Tipo = require('./tipo')
 // const _Nota = require('./nota')
 // const _Tag = require('./tag')
@@ -20,12 +21,14 @@ sequelize.authenticate()
   .catch((error) => console.log(`CONNECTION ERROR: ${error}`))
 
 let Alternativa = _Alternativa(sequelize, DataTypes);
+let Categoria = _Categoria(sequelize, DataTypes);
 let Tipo = _Tipo(sequelize, DataTypes);
 // let Nota = _Nota(sequelize, DataTypes);
 // let Tag = _Tag(sequelize, DataTypes);
 // let Checklist = _Checklist(sequelize, DataTypes);
 
 database['Alternativa'] = Alternativa;
+database['Categoria'] = Categoria;
 database['Tipo'] = Tipo;
 // database['Nota'] = Nota;
 // database['Tag'] = Tag;
