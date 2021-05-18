@@ -19,7 +19,7 @@ module.exports = function (sequelize, DataTypes) {
       }
     },
     {
-      tableName: 'int_questao',
+      tableName: 'int_questaoQuestionario',
       timestamps: true
     }
   );

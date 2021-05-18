@@ -1,10 +1,11 @@
 const { Router } = require('express');
 const router = Router()
-const tipoController = require('../controllers/tipo');
+const controller = require('../controllers/default');
+const { Tipo } = require('../models');
 
 router.get('/:id?', async (req, res) => {
   const { id } = req.params;
-  const tipos = await tipoController.getTipos(id)
+  const tipos = await controller.get(id, Tipo)
   res.send(tipos || [])
 });
 
@@ -12,7 +13,7 @@ router.post('/', async (req, res) => {
   try {
     const { body } = req
 
-    const tipo = await tipoController.save(body);
+    const tipo = await controller.save(body, Tipo);
 
     res.send(tipo)
   } catch (error) {
@@ -25,7 +26,7 @@ router.put('/:id', async (req, res) => {
     const { body } = req;
     const { id } = req.params
 
-    const tipo = await tipoController.edit(id, body)
+    const tipo = await controller.edit(id, body, Tipo)
 
     res.send(tipo);
   } catch (error) {
@@ -37,7 +38,7 @@ router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params
 
-    await tipoController.delete(id);
+    await controller.delete(id, Tipo);
 
     res.send(id)
   } catch (error) {

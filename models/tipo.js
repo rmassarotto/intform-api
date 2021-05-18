@@ -13,7 +13,7 @@ module.exports = function (sequelize, DataTypes) {
       }
     },
     {
-      tableName: 'tipo',
+      tableName: 'int_tipoAlternativa',
       timestamps: true
     }
   );
