@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const router = Router()
 const controller = require('../controllers/default');
+const controllerQuestionario = require('../controllers/questionario');
 const { Questionario } = require('../models');
 
 router.get('/:id?', async (req, res) => {
@@ -13,7 +14,7 @@ router.post('/', async (req, res) => {
   try {
     const { body } = req
 
-    const questionario = await controller.save(body, Questionario);
+    const questionario = await controllerQuestionario.save(body);
 
     res.send(questionario)
   } catch (error) {

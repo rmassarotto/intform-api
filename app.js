@@ -13,7 +13,13 @@ const questionario = require('./routes/questionario');
 const questao = require('./routes/questao');
 
 app.use(bodyParser.json());
-// app.use(cors)
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+    ],
+  })
+);
 
 // app.use(auth);
 app.use('/alternativa', alternativa)
@@ -24,5 +30,5 @@ app.use('/tipo', tipo)
 app.use('/usuario', usuario)
 
 app.listen(port, () => {
-    console.log(`Running in http://localhost:${port}`);
+  console.log(`Running in http://localhost:${port}`);
 })
