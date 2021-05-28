@@ -4,6 +4,34 @@ const { Questionario, Questao, Alternativa } = require('../models');
 
 let controller = {};
 
+controller.get = async (id = null) => {
+  let result = []
+
+  if (id) {
+    result = await Questionario.findOne({
+      where: {
+        id,
+      },
+      include: [
+        {
+          as: 'questoes',
+          model: Questao,
+          include: [
+            {
+              as: 'alternativas',
+              model: Alternativa
+            }
+          ]
+        },
+      ]
+    })
+  } else {
+    result = await Questionario.findAll()
+  }
+
+  return result
+};
+
 controller.save = async (questionario) => {
   const transaction = await Sequelize.transaction();
 

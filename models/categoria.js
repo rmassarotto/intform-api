@@ -18,12 +18,6 @@ module.exports = function (sequelize, DataTypes) {
     }
   );
 
-  Categoria.associate = function (models) {
-    this.hasMany(models.Questionario, {
-      foreignKey: 'categoriaId'
-    })
-  }
-
   return Categoria
 }
 

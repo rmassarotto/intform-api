@@ -11,6 +11,7 @@ const usuario = require('./routes/usuario');
 const categoria = require('./routes/categoria');
 const questionario = require('./routes/questionario');
 const questao = require('./routes/questao');
+const respostaQuestionario = require('./routes/respostaQuestionario');
 
 app.use(bodyParser.json());
 app.use(
@@ -27,6 +28,7 @@ app.use('/categoria', categoria)
 app.use('/questionario', questionario)
 app.use('/questao', questao)
 app.use('/tipo', tipo)
+app.use('/respostaQuestionario', respostaQuestionario)
 app.use('/usuario', usuario)
 
 app.listen(port, () => {

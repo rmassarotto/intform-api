@@ -1,22 +1,21 @@
 const { Router } = require('express');
 const router = Router()
-const controller = require('../controllers/default');
-const controllerQuestionario = require('../controllers/questionario');
-const { Questionario } = require('../models');
+const controllerResposta = require('../controllers/respostaQuestionario');
+const { RespostaQuestionario } = require('../models');
 
 router.get('/:id?', async (req, res) => {
   const { id } = req.params;
-  const questionarios = await controllerQuestionario.get(id)
-  res.send(questionarios || [])
+  const respostas = await controllerResposta.get(id)
+  res.send(respostas || [])
 });
 
 router.post('/', async (req, res) => {
   try {
     const { body } = req
 
-    const questionario = await controllerQuestionario.save(body);
+    const resposta = await controllerResposta.save(body);
 
-    res.send(questionario)
+    res.send(resposta)
   } catch (error) {
     res.status(500).send({ error })
   }
@@ -27,9 +26,9 @@ router.put('/:id', async (req, res) => {
     const { body } = req;
     const { id } = req.params
 
-    const questionario = await controller.edit(id, body, Questionario)
+    const resposta = await controller.edit(id, body, RespostaQuestionario)
 
-    res.send(questionario);
+    res.send(resposta);
   } catch (error) {
     res.status(500).send({ error })
   }
@@ -39,7 +38,7 @@ router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params
 
-    await controller.delete(id, Questionario);
+    await controller.delete(id, RespostaQuestionario);
 
     res.send(id)
   } catch (error) {

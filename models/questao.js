@@ -15,7 +15,11 @@ module.exports = function (sequelize, DataTypes) {
       },
       questionarioId: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: 'questionario',
+          key: 'id'
+        }
       }
     },
     {
@@ -23,11 +27,6 @@ module.exports = function (sequelize, DataTypes) {
       timestamps: true
     }
   );
-
-  Questao.associate = function (models) {
-    this.hasMany(models.Alternativa, { as: 'alternativa', foreignKey: 'questaoId' });
-    this.belongsTo(models.Questionario, { as: 'questionario', foreignKey: 'questionarioId' });
-  }
 
   return Questao
 }

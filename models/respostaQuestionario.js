@@ -1,15 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
-  const Alternativa = sequelize.define('alternativa',
+  const RespostaQuestionario = sequelize.define('respostaQuestionario',
     {
       id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
-      },
-      texto: {
-        type: DataTypes.STRING,
-        allowNull: false
       },
       questaoId: {
         type: DataTypes.INTEGER,
@@ -19,22 +15,34 @@ module.exports = function (sequelize, DataTypes) {
           key: 'id'
         }
       },
-      tipoId: {
+      alternativaId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: 'tipo',
+          model: 'alternativa',
+          key: 'id'
+        }
+      },
+      selected: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      usuarioId: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        reference: {
+          model: 'usuario',
           key: 'id'
         }
       }
     },
     {
-      tableName: 'int_alternativaQuestao',
+      tableName: 'int_respostaQuestionario',
       timestamps: true
     }
   );
 
-  return Alternativa
+  return RespostaQuestionario
 }
 
 

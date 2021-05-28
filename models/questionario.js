@@ -9,7 +9,11 @@ module.exports = function (sequelize, DataTypes) {
       },
       categoriaId: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: 'categoria',
+          key: 'id'
+        }
       },
       nome: {
         type: DataTypes.STRING,
@@ -21,11 +25,6 @@ module.exports = function (sequelize, DataTypes) {
       timestamps: true
     }
   );
-
-  Questionario.associate = function (models) {
-    this.belongsTo(models.Categoria, { as: 'categoria', sourceKey: 'id', foreignKey: 'categoriaId' });
-    this.hasMany(models.Questao, { as: 'questao', foreignKey: 'questionarioId' });
-  }
 
   return Questionario
 }
