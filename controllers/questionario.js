@@ -32,6 +32,22 @@ controller.get = async (id = null) => {
   return result
 };
 
+controller.getInfo = async (id = null) => {
+  let result = []
+
+  if (id) {
+    result = await Questionario.findOne({
+      where: {
+        id,
+      },
+    })
+  } else {
+    result = await Questionario.findAll()
+  }
+
+  return result
+};
+
 controller.save = async (questionario) => {
   const transaction = await Sequelize.transaction();
 

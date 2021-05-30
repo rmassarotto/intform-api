@@ -10,6 +10,16 @@ router.get('/:id?', async (req, res) => {
   res.send(questionarios || [])
 });
 
+router.get('/info/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const questionarios = await controllerQuestionario.getInfo(id)
+    res.send(questionarios || [])
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+});
+
 router.post('/', async (req, res) => {
   try {
     const { body } = req

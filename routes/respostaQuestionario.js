@@ -3,10 +3,24 @@ const router = Router()
 const controllerResposta = require('../controllers/respostaQuestionario');
 const { RespostaQuestionario } = require('../models');
 
-router.get('/:id?', async (req, res) => {
-  const { id } = req.params;
-  const respostas = await controllerResposta.get(id)
-  res.send(respostas || [])
+router.get('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const respostas = await controllerResposta.get(id)
+    res.send(respostas || [])
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+});
+
+router.get('/contagem/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const respostas = await controllerResposta.getResultado(id)
+    res.send(respostas || [])
+  } catch (error) {
+    res.status(500).send({ error })
+  }
 });
 
 router.post('/', async (req, res) => {
