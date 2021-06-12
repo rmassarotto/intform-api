@@ -5,11 +5,11 @@ const controller = require('../controllers/default');
 const { Usuario } = require('../models');
 
 router.get('/', async (req, res) => {
-  const [type, token] = req.headers['authorization'].split(' ');
+  const { authorization } = req.headers;
 
-  const { id } = jwt.decode(token);
+  const { id } = jwt.decode(authorization);
 
-  const usuario = await controller.getById(Usuario, id);
+  const usuario = await controller.get(id, Usuario);
 
   res.send(usuario);
 });
@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
   try {
     const { body } = req;
 
-    const usuario = await controller.save(Usuario, body);
+    const usuario = await controller.save(body, Usuario);
 
     res.send(usuario);
   } catch (error) {
@@ -30,11 +30,11 @@ router.post('/', async (req, res) => {
 router.put('/', async (req, res) => {
   try {
     const { body } = req;
-    const [type, token] = req.headers['authorization'].split(' ');
+    const { authorization } = req.headers;
 
-    const { id } = jwt.decode(token);
+    const { id } = jwt.decode(authorization);
 
-    const usuario = await controller.edit(Usuario, body, id);
+    const usuario = await controller.edit(id, body, Usuario);
 
     res.send(usuario);
   } catch (error) {

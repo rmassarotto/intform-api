@@ -12,6 +12,7 @@ const categoria = require('./routes/categoria');
 const questionario = require('./routes/questionario');
 const questao = require('./routes/questao');
 const respostaQuestionario = require('./routes/respostaQuestionario');
+const login = require('./routes/login');
 
 app.use(bodyParser.json());
 app.use(
@@ -22,6 +23,7 @@ app.use(
   })
 );
 
+app.use('/login', login)
 // app.use(auth);
 app.use('/alternativa', alternativa)
 app.use('/categoria', categoria)

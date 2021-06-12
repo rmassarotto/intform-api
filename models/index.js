@@ -54,7 +54,8 @@ database = {
   Tipo,
   Questionario,
   Questao,
-  RespostaQuestionario
+  RespostaQuestionario,
+  Usuario
 };
 
 database.sequelize = sequelize

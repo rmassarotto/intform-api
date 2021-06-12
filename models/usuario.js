@@ -23,13 +23,13 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING(300),
         allowNull: false,
       },
-      avatar: {
-        type: DataTypes.TEXT,
-        allowNull: true,
+      tipo: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
     },
     {
-      tableName: 'usuario',
+      tableName: 'int_usuario',
       timestamps: false,
       hooks: {
         beforeValidate: (usuario) => {
