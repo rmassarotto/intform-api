@@ -9,7 +9,7 @@ module.exports = function (sequelize, DataTypes) {
       },
       categoriaId: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: 'categoria',
           key: 'id'
