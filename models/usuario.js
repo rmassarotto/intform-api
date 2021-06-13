@@ -23,7 +23,7 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING(300),
         allowNull: false,
       },
-      tipo: {
+      tipoUsuarioId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
