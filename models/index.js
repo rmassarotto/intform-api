@@ -9,12 +9,20 @@ const _Usuario = require('./usuario')
 
 let database = {};
 
+// const options = {
+//   username: 'postgres',
+//   password: '4093047',
+//   host: 'localhost',
+//   dialect: 'postgres'
+// };
+
 const options = {
-  username: 'postgres',
-  password: '4093047',
-  host: 'localhost',
+  username: 'upqxgawdaaanri',
+  password: 'dc9970b9cb145d6e521dcae0715bdcf89c35efc221f3d295a3b22d04a843017a',
+  database: 'de4ij6j39n0dkc',
+  host: 'ec2-54-145-224-156.compute-1.amazonaws.com',
   dialect: 'postgres'
-};
+}
 
 const sequelize = new Sequelize(options);
 
