@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const app = express();
-const port = 3005;
+const port = 5432;
 const cors = require('cors')
 const auth = require('./middleware/auth');
 
