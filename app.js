@@ -15,13 +15,21 @@ const respostaQuestionario = require('./routes/respostaQuestionario');
 const login = require('./routes/login');
 
 app.use(bodyParser.json());
+
+// app.use(
+//   cors({
+//     origin: [
+//       "http://localhost:3000",
+//       "https://intform-vue.herokuapp.com/"
+//     ],
+//     credentials: false,
+//   })
+// );
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://intform-vue.herokuapp.com/"
-    ],
-    credentials: false,
+    "origin": "*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
   })
 );
 
