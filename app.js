@@ -21,6 +21,7 @@ app.use(
       "http://localhost:3000",
       "https://intform-vue.herokuapp.com/"
     ],
+    credentials: false,
   })
 );
 
