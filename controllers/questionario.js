@@ -32,6 +32,22 @@ controller.get = async (id = null) => {
   return result
 };
 
+controller.getByUsuarioId = async (usuarioId = null) => {
+  let result = []
+
+  if (usuarioId) {
+    result = await Questionario.findAll({
+      where: {
+        usuarioId,
+      },
+      order: [
+        ['id', 'DESC'],
+      ]
+    })
+  }
+  return result
+};
+
 controller.getInfo = async (id = null) => {
   let result = []
 

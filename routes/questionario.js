@@ -10,6 +10,17 @@ router.get('/:id?', async (req, res) => {
   res.send(questionarios || [])
 });
 
+router.get('/usuario/:usuarioId', async (req, res) => {
+  try {
+    const { usuarioId } = req.params;
+    console.log(usuarioId);
+    const questionarios = await controllerQuestionario.getByUsuarioId(usuarioId)
+    res.send(questionarios || [])
+  } catch (error) {
+    res.status(500).send({ error })
+  }
+});
+
 router.get('/info/:id', async (req, res) => {
   try {
     const { id } = req.params;

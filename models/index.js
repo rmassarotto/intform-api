@@ -46,6 +46,7 @@ let Usuario = _Usuario(sequelize, DataTypes);
 Categoria.hasMany(Questionario, { foreignKey: 'categoriaId' })
 Tipo.hasMany(Alternativa, { foreignKey: 'tipoId' })
 Questionario.belongsTo(Categoria, { as: 'categoria', sourceKey: 'id', foreignKey: 'categoriaId' });
+Questionario.belongsTo(Usuario, { as: 'usuario', sourceKey: 'id', foreignKey: 'usuarioId' });
 Questionario.hasMany(Questao, { as: 'questoes', foreignKey: 'questionarioId' });
 Questao.hasMany(Alternativa, { as: 'alternativas', foreignKey: 'questaoId' });
 Questao.belongsTo(Questionario, { foreignKey: 'questionarioId', sourceKey: 'id' });

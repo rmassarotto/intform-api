@@ -18,6 +18,14 @@ module.exports = function (sequelize, DataTypes) {
       nome: {
         type: DataTypes.STRING,
         allowNull: false
+      },
+      usuarioId: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        references: {
+          model: 'usuario',
+          key: 'id'
+        }
       }
     },
     {

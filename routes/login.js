@@ -4,7 +4,6 @@ const { login } = require('../controllers/usuario');
 
 router.post('/', async (req, res) => {
   try {
-    console.log(req.body);
     const { email, senha } = req.body;
 
     const token = await login(email, senha);
